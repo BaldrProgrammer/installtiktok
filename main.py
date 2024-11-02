@@ -1,5 +1,6 @@
 from aiogram import Bot, Dispatcher, F
 from aiogram.types import Message, FSInputFile
+from aiogram.filters import CommandStart
 from dotenv import load_dotenv
 from yt_dlp import YoutubeDL
 import logging
@@ -10,6 +11,11 @@ import os
 load_dotenv()
 bot = Bot(os.getenv('TOKEN'))
 dp = Dispatcher()
+
+
+@dp.message(CommandStart)
+async def start(message: Message):
+    await message.answer('Привет! Я бот, который скачивает видео из TikTok! Отправь мне ссылку на видео и получи его без водяного знака')
 
 
 @dp.message(F.text.startswith('https://'))
