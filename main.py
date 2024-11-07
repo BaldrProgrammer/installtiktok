@@ -13,7 +13,7 @@ bot = Bot(os.getenv('TOKEN'))
 dp = Dispatcher()
 
 
-@dp.message(CommandStart)
+@dp.message(CommandStart())
 async def start(message: Message):
     await message.answer('Привет! Я бот, который скачивает видео из TikTok! Отправь мне ссылку на видео и получи его без водяного знака')
 
